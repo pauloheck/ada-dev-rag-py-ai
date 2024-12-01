@@ -21,26 +21,37 @@ def main():
 
         
         while True:
-            print("\nOpções:")
-            print("1. Carregar documentos de um diretório")
-            print("2. Carregar arquivo PDF")
-            print("3. Adicionar texto manualmente")
-            print("4. Fazer uma pergunta")
-            print("5. Listar documentos")
-            print("6. Ver estatísticas")
-            print("7. Remover documento")
-            print("8. Limpar base de dados")
-            print("9. Exportar documentos")
-            print("10. Estatísticas detalhadas")
-            print("11. Visualizar conteúdo das fontes")
-            print("12. Carregar diagrama PNG")
-            print("13. Carregar diretório de diagramas")
-            print("14. Analisar imagem")
-            print("15. Sair")
+            print("\n=== Sistema RAG - Menu Principal ===\n")
             
-            choice = input("\nEscolha uma opção (1-15): ")
+            print("1. Carregamento de Documentos")
+            print("   1. Carregar documentos de um diretório")
+            print("   2. Carregar arquivo PDF")
+            print("   3. Adicionar texto manualmente")
+            print("   4. Carregar imagem")
+            print("   5. Carregar diretório de imagens")
             
-            if choice == "1":
+            print("\n2. Consulta e Visualização")
+            print("   6. Fazer uma pergunta")
+            print("   7. Listar documentos")
+            print("   8. Visualizar conteúdo das fontes")
+            
+            print("\n3. Estatísticas e Gerenciamento")
+            print("   9. Ver estatísticas")
+            print("   10. Estatísticas detalhadas")
+            print("   11. Remover documento")
+            print("   12. Limpar base de dados")
+            print("   13. Exportar documentos")
+            
+            print("\n0. Sair")
+            print("\n" + "="*20)
+            
+            choice = input("\nEscolha uma opção: ")
+            
+            if choice == "0":
+                print("\nEncerrando o programa...")
+                break
+            
+            elif choice == "1":
                 directory = input("\nDigite o caminho do diretório com os documentos: ")
                 try:
                     print("\nAnalisando diretório...")
@@ -88,27 +99,33 @@ def main():
                 print("Texto adicionado com sucesso!")
                 
             elif choice == "4":
+                image_path = input("\nDigite o caminho do arquivo de imagem: ")
+                print("\nCarregando imagem...")
+                document = rag.carregar_imagem(image_path)
+                if document:
+                    print("Imagem carregada com sucesso!")
+                else:
+                    print("Erro ao carregar a imagem.")
+                
+            elif choice == "5":
+                directory = input("\nDigite o caminho do diretório de imagens: ")
+                print("\nProcessando diretório de imagens...")
+                stats = rag.load_diagram_directory(directory)
+                print("\nProcessamento concluído!")
+                
+            elif choice == "6":
                 question = input("\nFaça sua pergunta: ")
                 print("\nProcessando sua pergunta...")
                 result = qa_chain.invoke({"input": question})
                 
                 print("\n" + "="*50)
-                print("RESPOSTA:")
-                print("="*50)
-                print(result['answer'])
-                print("="*50)
+                # O resultado é uma string direta
+                print("Resposta:", result)
+                print("\nFontes utilizadas:")
+                # As fontes não estão disponíveis no novo formato da chain
+                print("Nenhuma fonte disponível.")
                 
-                # Verifica se 'source_documents' está presente no resultado
-                if 'source_documents' in result:
-                    print("\n" + "="*50)
-                    print("FONTES UTILIZADAS:")
-                    print("="*50)
-                    for i, doc in enumerate(result["source_documents"], 1):
-                        print(f"Fonte {i}: {doc.metadata['source']}, Página: {doc.metadata['page']}")
-                else:
-                    print("Nenhuma fonte disponível.")
-                
-            elif choice == "5":
+            elif choice == "7":
                 print("\nListando documentos na base:")
                 print("=" * 50)
                 docs = rag.list_documents()
@@ -117,119 +134,71 @@ def main():
                 else:
                     for i, doc in enumerate(docs, 1):
                         print(f"\nDocumento {i}:")
-                        print("-" * 30)
-                        if hasattr(doc, 'metadata') and 'source' in doc.metadata:
-                            print(f"Fonte: {doc.metadata['source']}")
                         if hasattr(doc, 'metadata'):
+                            print(f"Fonte: {doc.metadata['source']}")
                             print(f"Metadados: {doc.metadata}")
                         print(f"Conteúdo: {doc.page_content[:200]}...")
-                        
-            elif choice == "6":
+                
+            elif choice == "8":
+                source = input("\nDigite o caminho da fonte (deixe em branco para todas): ")
+                content = rag.get_source_content(source if source else None)
+                if not content:
+                    print("Nenhum conteúdo encontrado.")
+                else:
+                    print("\nConteúdo das fontes:")
+                    print("=" * 50)
+                    for doc in content:
+                        print("-" * 30)
+                        if "source" in doc:
+                            print(f"Fonte: {doc['source']}")
+                        print(f"Conteúdo:\n{doc['content'][:500]}...")
+                
+            elif choice == "9":
                 stats = rag.get_collection_stats()
                 print("\nEstatísticas da Base:")
                 print("=" * 50)
                 print(f"Total de documentos: {stats['total_documents']}")
                 print(f"Diretório de persistência: {stats['persist_directory']}")
                 
-            elif choice == "7":
-                doc_id = input("\nDigite o ID do documento a ser removido: ")
-                if rag.delete_document(doc_id):
-                    print("Documento removido com sucesso!")
-                else:
-                    print("Erro ao remover documento.")
-                    
-            elif choice == "8":
-                confirm = input("\nTem certeza que deseja limpar toda a base? (s/n): ")
-                if confirm.lower() == 's':
-                    if rag.clear_collection():
-                        print("Base de dados limpa com sucesso!")
-                    else:
-                        print("Erro ao limpar base de dados.")
-                else:
-                    print("Operação cancelada.")
-                    
-            elif choice == "9":
-                export_dir = input("\nDigite o diretório para exportar os documentos: ")
-                if rag.export_collection(export_dir):
-                    print("Documentos exportados com sucesso!")
-                else:
-                    print("Erro ao exportar documentos.")
-                    
             elif choice == "10":
                 stats = rag.get_detailed_stats()
                 print("\nEstatísticas Detalhadas:")
                 print("=" * 50)
                 print(f"Total de documentos: {stats['total_documents']}")
                 print(f"Diretório de persistência: {stats['persist_directory']}")
-                
-                if stats["documents_by_type"]:
-                    print("\nDocumentos por tipo:")
-                    for doc_type, count in stats["documents_by_type"].items():
-                        print(f"- {doc_type}: {count}")
-                        
-                if stats["total_documents"] > 0:
-                    print("\nEstatísticas de conteúdo:")
+                if stats['total_documents'] > 0:
+                    print(f"\nEstatísticas de conteúdo:")
                     print(f"Tamanho total: {stats['total_content_size']} caracteres")
                     print(f"Tamanho médio: {stats['average_content_size']:.2f} caracteres")
                     print(f"Menor documento: {stats['min_content_size']} caracteres")
                     print(f"Maior documento: {stats['max_content_size']} caracteres")
-                    
+                
             elif choice == "11":
-                source = input("\nDigite o caminho da fonte (deixe em branco para todas): ")
-                content = rag.get_source_content(source if source else None)
-                
-                if not content:
-                    print("Nenhum conteúdo encontrado.")
+                doc_id = input("\nDigite o ID do documento a ser removido: ")
+                if rag.delete_document(doc_id):
+                    print("Documento removido com sucesso!")
                 else:
-                    print("\nConteúdo das fontes:")
-                    print("=" * 50)
-                    for i, doc in enumerate(content, 1):
-                        print(f"\nDocumento {i}:")
-                        print("-" * 30)
-                        if "source" in doc:
-                            print(f"Fonte: {doc['source']}")
-                        print(f"Conteúdo:\n{doc['content'][:500]}...")
-                        
+                    print("Erro ao remover documento.")
+                
             elif choice == "12":
-                image_path = input("\nDigite o caminho do arquivo PNG: ")
-                print("\nProcessando diagrama...")
-                result = rag.load_diagram(image_path)
-                
-                if result["status"] == "success":
-                    print("\nDiagrama processado com sucesso!")
-                    print(f"Elementos detectados: {result.get('num_elements', 0)}")
-                    if "element_types" in result:
-                        print(f"Tipos de elementos: {result['element_types']}")
+                confirm = input("\nTem certeza que deseja limpar toda a base? (s/n): ")
+                if confirm.lower() == 's':
+                    if rag.clear_collection():
+                        print("Base de dados limpa com sucesso!")
+                    else:
+                        print("Erro ao limpar a base de dados.")
                 else:
-                    print(f"\nErro ao processar diagrama: {result.get('error', 'Erro desconhecido')}")
-                    
+                    print("Operação cancelada.")
+                
             elif choice == "13":
-                directory = input("\nDigite o caminho do diretório com os diagramas: ")
-                try:
-                    result = rag.load_diagram_directory(directory)
-                    # O resumo será impresso automaticamente pela função
-                except Exception as e:
-                    print(f"\nErro ao processar diretório de diagramas: {e}")
-                    
-            elif choice == "14":
-                image_path = input("\nDigite o caminho da imagem a ser analisada: ")
-                context = input("Deseja adicionar um contexto à análise? (s/n): ")
-                if context.lower() == 's':
-                    user_context = input("Digite o contexto: ")
+                export_dir = input("\nDigite o diretório para exportar os documentos: ")
+                if rag.export_collection(export_dir):
+                    print("Documentos exportados com sucesso!")
                 else:
-                    user_context = None
-                print("\nAnalisando imagem...")
-                analysis_result = analyze_image(image_path, user_context)
-                print("\nResultado da Análise:")
-                print("=" * 50)
-                print(analysis_result)
-                
-            elif choice == "15":
-                print("\nEncerrando o programa...")
-                break
-                
+                    print("Erro ao exportar documentos.")
+                    
             else:
-                print("\nOpção inválida. Por favor, escolha uma opção entre 1 e 15.")
+                print("\nOpção inválida. Por favor, escolha uma opção válida.")
                 
     except Exception as e:
         print(f"\nErro fatal: {e}")
