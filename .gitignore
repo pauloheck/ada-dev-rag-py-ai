@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environments
+.venv/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+.env.bak
+.env.local
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Distribution / packaging
+.Python
+env.bak
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pyre type checker
+.pyre/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Poetry
+poetry.lock
+
+# ChromaDB
+chroma_db/

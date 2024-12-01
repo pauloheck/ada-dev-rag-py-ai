@@ -1,0 +1,1 @@
+print('Inciando o programa')

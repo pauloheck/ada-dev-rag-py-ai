@@ -1,0 +1,13 @@
+Opções:
+1. Carregar documentos de um diretório
+->  C:\rag
+
+2. Carregar arquivo PDF
+-> C:\rag\visa-com-numerics-faq.pdf
+
+
+13. Carregar diretório de diagramas
+-> C:\rag\image
+
+12. Carregar diagrama PNG
+-> C:\rag\image\5fca71bf7813f810e8c71be1_Payment-flow-4.png

@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "ada-dev-rag-py-ai"
+version = "0.0.1-alpha"
+description = "Projeto RAG (Retrieval Augmented Generation) em Python"
+authors = ["Paulo"]
+readme = "README.md"
+packages = [{include = "ada_dev_rag_py_ai", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = "^0.3.9"
+openai = "^1.55.3"
+chromadb = "^0.4.24"
+python-dotenv = "^1.0.1"
+pypdf = "^4.1.0"
+tqdm = "^4.66.2"
+langchain-community = "^0.3.8"
+langchain-openai = "^0.2.10"
+tiktoken = "^0.7.0"
+torch = "^2.2.1"
+torchvision = "^0.17.1"
+transformers = "^4.38.2"
+pillow = "^10.2.0"
+opencv-python = "^4.9.0"
+networkx = "^3.2.1"
+timm = "^0.9.16"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
