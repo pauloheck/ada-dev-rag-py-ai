@@ -5,6 +5,7 @@ from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoToken
 import torch
 from openai import OpenAI
 import pytesseract
+import base64
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
@@ -68,6 +69,11 @@ def process_image_with_model(image_file_path):
         logging.error(f"Erro ao processar a imagem: {e}")
         return ""
 
+# Função para codificar a imagem em base64
+def encode_image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+
 # Função principal para analisar a imagem
 def analyze_image(image_file_path, context=None):
     converted_path = convert_image_format(image_file_path)
@@ -77,30 +83,64 @@ def analyze_image(image_file_path, context=None):
     # Obter análise da imagem
     image_analysis = process_image_with_model(converted_path)
 
+    # Análise de contexto adicional usando OpenAI
+    context_prompt = f"""
+    Com base no texto extraído, forneça informações adicionais que possam enriquecer a compreensão do fluxo descrito. Considere aspectos técnicos, funcionais e contextuais relevantes.
+
+    Texto extraído:
+    {image_analysis}
+    """
+
+    try:
+        # Chamada à API do OpenAI para buscar contexto adicional
+        context_response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "Você é um assistente especializado em fornecer contexto adicional."},
+                {"role": "user", "content": context_prompt}
+            ],
+            max_tokens=500,
+            n=1,
+            temperature=0.7,
+        )
+        additional_context = context_response.choices[0].message.content.strip()
+    except Exception as e:
+        logging.error(f"Erro ao buscar contexto adicional: {e}")
+        additional_context = ""
+
     # Preparar o prompt para o GPT-4
     prompt = f"""
-Analise o diagrama fornecido e forneça uma descrição detalhada e formal do que está representado, incluindo:
-- O fluxo de informações ou operações mostrado, identificando claramente o início e o fim do fluxo.
-- Os participantes ou elementos visíveis (ex: pessoas, instituições, dispositivos) e suas funções.
-- A interação entre esses participantes ou elementos, destacando as conexões e transições entre eles.
-- Explique o processo ilustrado passo a passo de maneira detalhada, mencionando quaisquer setas ou linhas que indiquem direção ou sequência.
-- Forneça uma análise objetiva e confiável, evitando suposições e focando nos elementos visíveis e informações extraídas.
-Se necessário, mencione conexões técnicas ou funcionais.
+    Analise o diagrama fornecido e forneça uma descrição detalhada e formal do que está representado, incluindo:
+    - O fluxo de informações ou operações mostrado, identificando claramente o início e o fim do fluxo.
+    - Os participantes ou elementos visíveis (ex: pessoas, instituições, dispositivos) e suas funções.
+    - A interação entre esses participantes ou elementos, destacando as conexões e transições entre eles.
+    - Explique o processo ilustrado passo a passo de maneira detalhada, mencionando quaisquer setas ou linhas que indiquem direção ou sequência.
+    - Forneça uma análise objetiva e confiável, evitando suposições e focando nos elementos visíveis e informações extraídas.
+    Se necessário, mencione conexões técnicas ou funcionais.
 
-Informações da imagem:
-{image_analysis}
-"""
+    Informações da imagem:
+    {image_analysis}
+    """
 
     if context:
         prompt += f"\nContexto adicional: {context}"
 
+    # Codificar a imagem
+    image_base64 = encode_image_to_base64(converted_path)
+
+    # Criar o conteúdo da mensagem com a imagem
+    message_content = [
+        {"type": "text", "text": prompt},
+        {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{image_base64}"}},
+    ]
+
+    # Enviar a imagem e o texto para o OpenAI
     try:
-        # Chamada à API do OpenAI usando a nova interface
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "Você é um assistente especializado em análise de imagens."},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": message_content}
             ],
             max_tokens=1500,
             n=1,
