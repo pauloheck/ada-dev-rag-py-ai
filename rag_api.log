@@ -1,0 +1,134 @@
+2024-12-01 17:35:40,617 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-01 17:35:54,753 - src.ada_dev_rag_py_ai.api - INFO - [9003ce27-b572-418f-97dc-c3c0126b5aff] Starting basic stats retrieval
+2024-12-01 17:35:54,768 - src.ada_dev_rag_py_ai.api - INFO - [9003ce27-b572-418f-97dc-c3c0126b5aff] Basic stats retrieved successfully in 0.0127 seconds
+2024-12-01 17:35:54,768 - src.ada_dev_rag_py_ai.api - INFO - [9003ce27-b572-418f-97dc-c3c0126b5aff] Collection contains: 84 documents, 0 chunks
+2024-12-01 17:35:54,768 - src.ada_dev_rag_py_ai.api - INFO - [9003ce27-b572-418f-97dc-c3c0126b5aff] Total stats retrieval process completed in 0.0153 seconds
+2024-12-01 17:35:54,770 - src.ada_dev_rag_py_ai.api - ERROR - [9003ce27-b572-418f-97dc-c3c0126b5aff] Error retrieving basic stats: 1 validation error for CollectionStats
+document_types
+  Field required [type=missing, input_value={'total_documents': 84, '...directory': 'chroma_db'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2024-12-01 17:35:54,771 - src.ada_dev_rag_py_ai.api - ERROR - [9003ce27-b572-418f-97dc-c3c0126b5aff] Traceback: Traceback (most recent call last):
+  File "C:\Users\paulo\OneDrive\Documentos\adadev\ada-dev-rag-py-ai\src\ada_dev_rag_py_ai\api.py", line 216, in get_basic_stats
+    return CollectionStats(**stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\paulo\OneDrive\Documentos\adadev\ada-dev-rag-py-ai\.venv\Lib\site-packages\pydantic\main.py", line 214, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CollectionStats
+document_types
+  Field required [type=missing, input_value={'total_documents': 84, '...directory': 'chroma_db'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2024-12-01 17:35:54,771 - src.ada_dev_rag_py_ai.api - ERROR - [9003ce27-b572-418f-97dc-c3c0126b5aff] Error occurred after 0.0178 seconds
+2024-12-01 17:37:14,262 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-01 17:37:32,121 - src.ada_dev_rag_py_ai.api - INFO - [ee0ca405-3e51-4118-bb84-9f9c21e686b7] Starting basic stats retrieval
+2024-12-01 17:37:32,135 - src.ada_dev_rag_py_ai.api - INFO - [ee0ca405-3e51-4118-bb84-9f9c21e686b7] Basic stats retrieved successfully in 0.0139 seconds
+2024-12-01 17:37:32,136 - src.ada_dev_rag_py_ai.api - INFO - [ee0ca405-3e51-4118-bb84-9f9c21e686b7] Collection contains: 84 documents, Document types: {'text': 84, 'image': 0}
+2024-12-01 17:37:32,136 - src.ada_dev_rag_py_ai.api - INFO - [ee0ca405-3e51-4118-bb84-9f9c21e686b7] Total stats retrieval process completed in 0.0149 seconds
+2024-12-01 17:38:04,064 - src.ada_dev_rag_py_ai.api - INFO - Received query request: sfgsdf
+2024-12-01 17:38:05,230 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-01 17:38:06,143 - src.ada_dev_rag_py_ai.api - INFO - Query result: [Document(metadata={'added_at': '2024-12-01T17:13:46.459098', 'source': 'texto_manual_1', 'type': 'texto'}, page_content='strifsdfgsdfgsdng'), Document(metadata={'added_at': '2024-12-01T16:16:26.791440', 'source': 'texto_manual_1', 'type': 'texto'}, page_content='sadfasdfa sdfasdf a'), Document(metadata={'added_at': '2024-12-01T17:25:22.452183', 'source': 'texto_manual_1', 'type': 'texto'}, page_content='strsdfgsdfgsdfgsdfg dfg sdfg sdf gsdfing')]
+2024-12-01 17:38:06,144 - src.ada_dev_rag_py_ai.api - INFO - Response: answer='strifsdfgsdfgsdng sadfasdfa sdfasdf a strsdfgsdfgsdfgsdfg dfg sdfg sdf gsdfing' sources=[{'source': 'texto_manual_1', 'type': 'texto'}, {'source': 'texto_manual_1', 'type': 'texto'}, {'source': 'texto_manual_1', 'type': 'texto'}]
+2024-12-01 17:38:12,215 - src.ada_dev_rag_py_ai.api - INFO - Received request to add text document: content='strsdfgsdfgsdfgsdfg dfg sdfg sdf gsdfing' metadata={}
+2024-12-01 17:38:12,216 - src.ada_dev_rag_py_ai.api - INFO - Preparing to add document content to the knowledge base: strsdfgsdfgsdfgsdfg dfg sdfg sdf gsdfing
+2024-12-01 17:38:13,525 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-01 17:38:13,596 - src.ada_dev_rag_py_ai.api - INFO - Document added successfully: True
+2024-12-01 17:38:13,597 - src.ada_dev_rag_py_ai.api - INFO - Returning success response for document addition
+2024-12-01 17:38:18,140 - src.ada_dev_rag_py_ai.api - INFO - [e3b280b0-4133-45a3-a482-0c8672efb24a] Received request to load directory: C:\rag
+2024-12-01 17:38:18,141 - src.ada_dev_rag_py_ai.api - INFO - [e3b280b0-4133-45a3-a482-0c8672efb24a] Starting to load documents from directory: C:\rag
+2024-12-01 17:38:19,655 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-01 17:38:20,821 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-01 17:38:21,421 - src.ada_dev_rag_py_ai.api - INFO - [e3b280b0-4133-45a3-a482-0c8672efb24a] Directory load statistics: {
+  "total_files": 2,
+  "processed_files": 2,
+  "failed_files": 0,
+  "skipped_files": 0,
+  "errors": []
+}
+2024-12-01 17:38:21,421 - src.ada_dev_rag_py_ai.api - INFO - [e3b280b0-4133-45a3-a482-0c8672efb24a] Directory loaded in 3.2808 seconds
+2024-12-01 17:38:21,421 - src.ada_dev_rag_py_ai.api - INFO - [e3b280b0-4133-45a3-a482-0c8672efb24a] Total directory load process completed in 3.2813 seconds
+2024-12-01 17:38:30,771 - root - INFO - Imagem convertida para C:\Users\paulo\AppData\Local\Temp\tmpf70mxwpt.png
+2024-12-01 17:38:31,274 - root - INFO - Texto extraído: 
+2024-12-01 17:38:35,441 - root - INFO - Legenda gerada: a painting of a statue of a woman holding a bat 
+2024-12-01 17:38:40,492 - openai._base_client - INFO - Retrying request to /chat/completions in 0.385982 seconds
+2024-12-01 17:39:00,688 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-01 17:39:14,036 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-01 17:39:15,166 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-01 17:39:32,076 - root - INFO - Texto extraído: ATM.
+| ATMs: Interface
+Pos
+PoS Terminals ieee
+Gateway
+Gateways ey)
+
+MasterCard Rrerrarcoral
+Interface
+VISA visa
+Interface
+Diners mic
+Interface
+
+Cardholder/ Merchant
+
+Acquiring Bank
+
+Network
+
+2024-12-01 17:39:35,725 - root - INFO - Legenda gerada: a collage of photos showing different types of electronic devices 
+2024-12-01 17:39:51,390 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-01 17:40:03,635 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-01 17:40:04,852 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-01 17:40:27,881 - src.ada_dev_rag_py_ai.api - INFO - [eb030358-5870-49dc-a147-b814ce7986a5] Starting basic stats retrieval
+2024-12-01 17:40:27,885 - src.ada_dev_rag_py_ai.api - INFO - [eb030358-5870-49dc-a147-b814ce7986a5] Basic stats retrieved successfully in 0.0040 seconds
+2024-12-01 17:40:27,885 - src.ada_dev_rag_py_ai.api - INFO - [eb030358-5870-49dc-a147-b814ce7986a5] Collection contains: 103 documents, Document types: {'text': 103, 'image': 0}
+2024-12-01 17:40:27,886 - src.ada_dev_rag_py_ai.api - INFO - [eb030358-5870-49dc-a147-b814ce7986a5] Total stats retrieval process completed in 0.0050 seconds
+2024-12-01 17:42:03,943 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-01 17:42:29,274 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] Starting detailed stats retrieval
+2024-12-01 17:42:29,288 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] Detailed stats retrieved successfully in 0.0141 seconds
+2024-12-01 17:42:29,288 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] Detailed collection stats:
+2024-12-01 17:42:29,288 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] - Total Documents: 103
+2024-12-01 17:42:29,289 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] - Document Types: {'text': 103, 'image': 0}
+2024-12-01 17:42:29,289 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] - Sources: 0 sources
+2024-12-01 17:42:29,289 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] - Last Modified: 2024-12-01 17:42:29
+2024-12-01 17:42:29,289 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] - Collection Name: default_collection
+2024-12-01 17:42:29,289 - src.ada_dev_rag_py_ai.api - INFO - [f067d340-8158-4a96-85a1-ea0beddfbda7] Total detailed stats retrieval process completed in 0.0154 seconds
+2024-12-01 17:45:27,167 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-01 17:45:38,023 - src.ada_dev_rag_py_ai.api - WARNING - [c169dae4-e163-4c67-8f7a-78677664b104] Iniciando processo de limpeza da coleção completa
+2024-12-01 17:45:38,027 - src.ada_dev_rag_py_ai.api - ERROR - [c169dae4-e163-4c67-8f7a-78677664b104] Erro ao limpar coleção: 'RAG' object has no attribute 'limpar_base'
+2024-12-01 17:45:38,028 - src.ada_dev_rag_py_ai.api - ERROR - [c169dae4-e163-4c67-8f7a-78677664b104] Traceback: Traceback (most recent call last):
+  File "C:\Users\paulo\OneDrive\Documentos\adadev\ada-dev-rag-py-ai\src\ada_dev_rag_py_ai\api.py", line 361, in clear_collection
+    success = await asyncio.to_thread(rag.limpar_base)
+                                      ^^^^^^^^^^^^^^^
+AttributeError: 'RAG' object has no attribute 'limpar_base'
+
+2024-12-01 17:45:38,028 - src.ada_dev_rag_py_ai.api - ERROR - [c169dae4-e163-4c67-8f7a-78677664b104] Erro ocorreu após 0.0053 segundos
+2024-12-01 17:47:13,725 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-01 17:47:17,881 - src.ada_dev_rag_py_ai.api - WARNING - [b2ad8594-fac1-443d-a6a0-7f28d2afc077] Iniciando processo de limpeza da coleção completa
+2024-12-01 17:47:19,024 - src.ada_dev_rag_py_ai.api - INFO - [b2ad8594-fac1-443d-a6a0-7f28d2afc077] Coleção limpa com sucesso em 1.1282 segundos
+2024-12-01 17:47:19,024 - src.ada_dev_rag_py_ai.api - INFO - [b2ad8594-fac1-443d-a6a0-7f28d2afc077] Documentos removidos: 103
+2024-12-01 17:47:19,025 - src.ada_dev_rag_py_ai.api - INFO - [b2ad8594-fac1-443d-a6a0-7f28d2afc077] Verificação pós-limpeza: 0 documentos restantes
+2024-12-01 17:47:19,025 - src.ada_dev_rag_py_ai.api - INFO - [b2ad8594-fac1-443d-a6a0-7f28d2afc077] Processo de limpeza da coleção concluído em 1.1440 segundos
+2024-12-01 17:47:46,792 - root - INFO - Texto extraído: ATM.
+| ATMs: Interface
+Pos
+PoS Terminals ieee
+Gateway
+Gateways ey)
+
+MasterCard Rrerrarcoral
+Interface
+VISA visa
+Interface
+Diners mic
+Interface
+
+Cardholder/ Merchant
+
+Acquiring Bank
+
+Network
+
+2024-12-01 17:47:50,916 - root - INFO - Legenda gerada: a collage of photos showing different types of electronic devices 
+2024-12-01 17:48:07,044 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-01 17:48:17,404 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-01 17:48:18,346 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"

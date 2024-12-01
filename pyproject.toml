@@ -25,6 +25,9 @@ opencv-python = "^4.9.0"
 networkx = "^3.2.1"
 timm = "^0.9.16"
 pytesseract = "^0.3.10"
+fastapi = "^0.115.5"
+uvicorn = {extras = ["standard"], version = "^0.32.1"}
+aiofiles = "^24.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"

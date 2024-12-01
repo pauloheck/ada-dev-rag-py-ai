@@ -83,6 +83,23 @@ load_dotenv()
 api_key = os.getenv('API_KEY')
 ```
 
+## Running the FastAPI Application
+
+To start the FastAPI application using Uvicorn, use the following command:
+
+```bash
+uvicorn src.ada_dev_rag_py_ai.api:app --host 0.0.0.0 --port 8000
+```
+
+### Explanation
+
+- **`uvicorn`**: The command to run the Uvicorn server.
+- **`src.ada_dev_rag_py_ai.api:app`**: Specifies the application to run, where `src.ada_dev_rag_py_ai.api` is the module path and `app` is the ASGI application instance.
+- **`--host 0.0.0.0`**: Makes the application accessible from any network interface on the machine.
+- **`--port 8000`**: The port on which the application will listen for incoming HTTP requests.
+
+This command is typically used during development to run the FastAPI application locally. For production deployments, consider using a more robust setup with a process manager and a reverse proxy.
+
 ## Boas Práticas
 
 1. **SEMPRE** use o ambiente virtual ao trabalhar no projeto
