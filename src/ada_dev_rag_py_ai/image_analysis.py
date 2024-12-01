@@ -79,13 +79,12 @@ def analyze_image(image_file_path, context=None):
 
     # Preparar o prompt para o GPT-4
     prompt = f"""
-Você é um modelo especializado em análise de imagens.
-Baseando-se nas informações fornecidas abaixo, descreva o que está representado na imagem, incluindo:
-- O fluxo de informações ou operações mostrado.
-- Os participantes ou elementos visíveis (ex: pessoas, instituições, dispositivos).
-- As funções de cada participante ou elemento.
-- A interação entre esses participantes ou elementos.
-- Explique o processo ilustrado passo a passo de maneira detalhada.
+Analise o diagrama fornecido e forneça uma descrição detalhada e formal do que está representado, incluindo:
+- O fluxo de informações ou operações mostrado, identificando claramente o início e o fim do fluxo.
+- Os participantes ou elementos visíveis (ex: pessoas, instituições, dispositivos) e suas funções.
+- A interação entre esses participantes ou elementos, destacando as conexões e transições entre eles.
+- Explique o processo ilustrado passo a passo de maneira detalhada, mencionando quaisquer setas ou linhas que indiquem direção ou sequência.
+- Forneça uma análise objetiva e confiável, evitando suposições e focando nos elementos visíveis e informações extraídas.
 Se necessário, mencione conexões técnicas ou funcionais.
 
 Informações da imagem:
