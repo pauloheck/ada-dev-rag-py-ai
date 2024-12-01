@@ -3,6 +3,7 @@ Módulo principal para execução do sistema RAG
 """
 import os
 from ada_dev_rag_py_ai.core import init_llm, init_rag, create_qa_chain
+from ada_dev_rag_py_ai.image_analysis import analyze_image
 
 def main():
     """
@@ -34,9 +35,10 @@ def main():
             print("11. Visualizar conteúdo das fontes")
             print("12. Carregar diagrama PNG")
             print("13. Carregar diretório de diagramas")
-            print("14. Sair")
+            print("14. Analisar imagem")
+            print("15. Sair")
             
-            choice = input("\nEscolha uma opção (1-14): ")
+            choice = input("\nEscolha uma opção (1-15): ")
             
             if choice == "1":
                 directory = input("\nDigite o caminho do diretório com os documentos: ")
@@ -210,11 +212,24 @@ def main():
                     print(f"\nErro ao processar diretório de diagramas: {e}")
                     
             elif choice == "14":
+                image_path = input("\nDigite o caminho da imagem a ser analisada: ")
+                context = input("Deseja adicionar um contexto à análise? (s/n): ")
+                if context.lower() == 's':
+                    user_context = input("Digite o contexto: ")
+                else:
+                    user_context = None
+                print("\nAnalisando imagem...")
+                analysis_result = analyze_image(image_path, user_context)
+                print("\nResultado da Análise:")
+                print("=" * 50)
+                print(analysis_result)
+                
+            elif choice == "15":
                 print("\nEncerrando o programa...")
                 break
                 
             else:
-                print("\nOpção inválida. Por favor, escolha uma opção entre 1 e 14.")
+                print("\nOpção inválida. Por favor, escolha uma opção entre 1 e 15.")
                 
     except Exception as e:
         print(f"\nErro fatal: {e}")
