@@ -8,6 +8,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from .image_analysis import analyze_image
 from datetime import datetime
+from .embeddings import MultimodalEmbeddings
 
 class RAG:
     def __init__(self, persist_directory: str = "chroma_db"):
@@ -18,7 +19,7 @@ class RAG:
             persist_directory: Diretório para persistir a base vetorial
         """
         self.persist_directory = persist_directory
-        self.embeddings = OpenAIEmbeddings()
+        self.embeddings = MultimodalEmbeddings()
         
         # Cria ou carrega a base vetorial
         if os.path.exists(persist_directory):
@@ -551,3 +552,84 @@ class RAG:
         except Exception as e:
             print(f"Erro ao obter conteúdo: {str(e)}")
             return []
+
+    def add_image_with_text(self, image_path: str, text_description: str, metadata: Optional[Dict] = None) -> None:
+        """
+        Adiciona uma imagem com descrição textual à base de conhecimento
+        
+        Args:
+            image_path: Caminho para o arquivo de imagem
+            text_description: Descrição textual da imagem
+            metadata: Metadados adicionais
+        """
+        try:
+            # Gera embeddings para texto e imagem
+            text_embedding = self.embeddings.embed_query(text_description)
+            image_embedding = self.embeddings.embed_image(image_path)
+            
+            # Combina os embeddings
+            combined_embedding = self.embeddings.combine_embeddings(
+                text_embedding, 
+                image_embedding,
+                weight_text=0.5
+            )
+            
+            # Cria documento com embeddings combinados
+            metadata = metadata or {}
+            metadata.update({
+                'source': image_path,
+                'type': 'multimodal',
+                'created_at': datetime.now().isoformat()
+            })
+            
+            document = Document(
+                page_content=text_description,
+                metadata=metadata
+            )
+            
+            # Adiciona à base vetorial
+            self.vectordb.add_documents([document], embeddings=[combined_embedding])
+            self.vectordb.persist()
+            
+        except Exception as e:
+            raise Exception(f"Erro ao adicionar imagem com texto: {str(e)}")
+            
+    def query_multimodal(self, query_text: str, query_image: Optional[str] = None, 
+                        k: int = 4, weight_text: float = 0.7) -> List[Document]:
+        """
+        Realiza busca multimodal combinando texto e imagem
+        
+        Args:
+            query_text: Texto da consulta
+            query_image: Caminho opcional para imagem de consulta
+            k: Número de resultados
+            weight_text: Peso do texto na busca (0-1)
+            
+        Returns:
+            Lista de documentos relevantes
+        """
+        try:
+            # Gera embedding do texto
+            text_embedding = self.embeddings.embed_query(query_text)
+            
+            # Se tiver imagem, combina os embeddings
+            if query_image:
+                image_embedding = self.embeddings.embed_image(query_image)
+                query_embedding = self.embeddings.combine_embeddings(
+                    text_embedding,
+                    image_embedding,
+                    weight_text=weight_text
+                )
+            else:
+                query_embedding = text_embedding
+            
+            # Realiza a busca
+            results = self.vectordb.similarity_search_by_vector(
+                embedding=query_embedding,
+                k=k
+            )
+            
+            return results
+            
+        except Exception as e:
+            raise Exception(f"Erro na busca multimodal: {str(e)}")

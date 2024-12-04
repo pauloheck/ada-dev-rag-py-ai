@@ -132,3 +132,238 @@ Network
 2024-12-01 17:48:07,044 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2024-12-01 17:48:17,404 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2024-12-01 17:48:18,346 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:30:07,241 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:30:07,520 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2024-12-03 21:34:26,700 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:34:26,966 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2024-12-03 21:34:46,054 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:34:46,303 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2024-12-03 21:35:49,697 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:35:56,390 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:36:01,727 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:36:34,322 - src.ada_dev_rag_py_ai.api - INFO - [024b25cd-92d5-41cd-9cf1-5e13d30f55aa] Starting basic stats retrieval
+2024-12-03 21:36:34,348 - src.ada_dev_rag_py_ai.api - INFO - [024b25cd-92d5-41cd-9cf1-5e13d30f55aa] Basic stats retrieved successfully in 0.0258 seconds
+2024-12-03 21:36:34,348 - src.ada_dev_rag_py_ai.api - INFO - [024b25cd-92d5-41cd-9cf1-5e13d30f55aa] Collection contains: 11 documents, Document types: {'text': 11, 'image': 0}
+2024-12-03 21:36:34,348 - src.ada_dev_rag_py_ai.api - INFO - [024b25cd-92d5-41cd-9cf1-5e13d30f55aa] Total stats retrieval process completed in 0.0258 seconds
+2024-12-03 21:36:43,124 - src.ada_dev_rag_py_ai.api - INFO - Received request to add text document: content='Este é um documento de teste para o sistema RAG.' metadata=None
+2024-12-03 21:36:43,124 - src.ada_dev_rag_py_ai.api - INFO - Preparing to add document content to the knowledge base: Este é um documento de teste para o sistema RAG.
+2024-12-03 21:36:45,602 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:36:45,680 - src.ada_dev_rag_py_ai.api - INFO - Document added successfully: True
+2024-12-03 21:36:45,681 - src.ada_dev_rag_py_ai.api - INFO - Returning success response for document addition
+2024-12-03 21:37:10,134 - src.ada_dev_rag_py_ai.api - INFO - Received query request: strxcxcvxcvbxcing
+2024-12-03 21:37:11,329 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:37:11,340 - src.ada_dev_rag_py_ai.api - INFO - Query result: [Document(metadata={'created_at': '2024-12-01 19:43:54.305876', 'filename': 'tmp2y93nlfs.pdf', 'page': 0, 'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, page_content=' \n \n \n \n \n \n \n \n \n \n \nPreparação para o BIN de oito dígitos  \n \nPerguntas frequentes  \n \nJaneiro de 2020 \n \n \n \nVisa Public  \n'), Document(metadata={'created_at': '2024-12-01 19:43:56.537650', 'filename': 'tmp2y93nlfs.pdf', 'page': 5, 'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, page_content='Preparação para o BIN de oito \n \nVisa Public  5  \n tokenização.  '), Document(metadata={'created_at': '2024-12-01 19:43:55.947519', 'filename': 'tmp2y93nlfs.pdf', 'page': 3, 'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, page_content='Preparação para o BIN de oito \n \nVisa Public  3  \n remoção de BINs de seis dígitos do sistema, os estabelecimentos comerciais, adquirentes e \nprocessadores devem continuar a aceitar BINs de seis e oito dígitos.  ')]
+2024-12-03 21:37:11,341 - src.ada_dev_rag_py_ai.api - INFO - Response: answer=' \n \n \n \n \n \n \n \n \n \n \nPreparação para o BIN de oito dígitos  \n \nPerguntas frequentes  \n \nJaneiro de 2020 \n \n \n \nVisa Public  \n Preparação para o BIN de oito \n \nVisa Public  5  \n tokenização.   Preparação para o BIN de oito \n \nVisa Public  3  \n remoção de BINs de seis dígitos do sistema, os estabelecimentos comerciais, adquirentes e \nprocessadores devem continuar a aceitar BINs de seis e oito dígitos.  ' sources=[{'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, {'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, {'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}]
+2024-12-03 21:37:24,520 - src.ada_dev_rag_py_ai.api - INFO - Received request to add text document: content='strvzxcvzxcvzxing' metadata={}
+2024-12-03 21:37:24,521 - src.ada_dev_rag_py_ai.api - INFO - Preparing to add document content to the knowledge base: strvzxcvzxcvzxing
+2024-12-03 21:37:25,027 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:37:25,046 - src.ada_dev_rag_py_ai.api - INFO - Document added successfully: True
+2024-12-03 21:37:25,046 - src.ada_dev_rag_py_ai.api - INFO - Returning success response for document addition
+2024-12-03 21:37:31,316 - src.ada_dev_rag_py_ai.api - INFO - Received request to add text document: content='strvzxcvzxcvzxing' metadata={}
+2024-12-03 21:37:31,317 - src.ada_dev_rag_py_ai.api - INFO - Preparing to add document content to the knowledge base: strvzxcvzxcvzxing
+2024-12-03 21:37:31,914 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:37:31,933 - src.ada_dev_rag_py_ai.api - INFO - Document added successfully: True
+2024-12-03 21:37:31,933 - src.ada_dev_rag_py_ai.api - INFO - Returning success response for document addition
+2024-12-03 21:37:57,102 - root - INFO - Texto extraído: {}
+
+AWS WAF AWS Shield aws | $1 Pubiic’subnet
+
+PrivateLink
+
+Amazon
+Route 53
+
+Amazon API
+Gateway
+
+AWS Certificate
+Manager
+
+on 2a
+coud ront
+
+Amazon Amazon AWS
+
+ElastiCache Aurora CloudHSM
+
+Amazon
+
+Amazon _ AWS
+ElastiCache Aurora CloudHSM
+
+re
+
+Amazon S3 PrivateLink
+
+Amazon Amazon
+
+Amazon Elastic Container Amazon Elastic Container
+
+Service
+
+Amazon
+
+\WS
+DynamobB— :CloudTrail CloudWatch OpenSearch
+
+Service
+
+Amazon
+juardDuty
+
+Registry
+
+AWS
+Config
+
+AWS Secrets
+Manager
+
+El
+
+Payment
+Processor
+
+Card Scheme
+
+2024-12-03 21:38:02,415 - root - INFO - Legenda gerada: a screen shot of a number of electronic devices 
+2024-12-03 21:38:04,181 - src.ada_dev_rag_py_ai.api - INFO - Received query request: O que é o sistema RAG?
+2024-12-03 21:38:04,926 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:38:04,933 - src.ada_dev_rag_py_ai.api - INFO - Query result: [Document(metadata={'added_at': '2024-12-03T21:36:43.124635', 'source': 'texto_manual_1', 'type': 'texto'}, page_content='Este é um documento de teste para o sistema RAG.'), Document(metadata={'created_at': '2024-12-01 19:43:54.305876', 'filename': 'tmp2y93nlfs.pdf', 'page': 0, 'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, page_content=' \n \n \n \n \n \n \n \n \n \n \nPreparação para o BIN de oito dígitos  \n \nPerguntas frequentes  \n \nJaneiro de 2020 \n \n \n \nVisa Public  \n'), Document(metadata={'created_at': '2024-12-01 19:45:11.105133', 'filename': 'tmpdlukcljx.png', 'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmpdlukcljx.png', 'type': 'image'}, page_content='### Análise do Diagrama de Fluxo de Informações\n\n#### Descrição Geral\nO diagrama apresentado ilustra um sistema de transações financeiras que envolve diferentes participantes e interfaces, destacando a interação entre eles em um fluxo de informações. O diagrama é dividido em três seções principais: "Cardholder/Merchant", "Acquiring Bank" e "Network".\n\n#### Fluxo de Informações\n- **Início do Fluxo:** O fluxo de informações inicia-se com o **Cardholder/Merchant**, que pode ser um consumidor ou um comerciante que utiliza dispositivos como **ATMs** (caixas eletrônicos), **PoS Terminals** (terminais de ponto de venda) e **Gateways**.\n- **Fim do Fluxo:** O fluxo se conclui quando a transação é processada através das interfaces de diferentes redes de pagamento (MasterCard, VISA, Diners).\n\n#### Participantes e Elementos Visíveis\n1. **Cardholder/Merchant:**\n   - **ATMs:** Dispositivos que permitem aos usuários realizar operações bancárias, como saques e consultas de saldo.\n   - **PoS Terminals:** Terminais de venda que facilitam transações em lojas.\n   - **Gateways:** Plataformas que conectam os comerciantes às redes de pagamento.\n\n2. **Acquiring Bank:**\n   - **Router:** Um elemento central que direciona as transações entre os dispositivos de entrada (ATM, PoS, Gateway) e as interfaces de rede.\n\n3. **Network:**\n   - **MasterCard, VISA, Diners:** Redes de pagamento que processam as transações e fornecem a interface para a comunicação.\n\n#### Interação entre os Participantes\n- As setas no diagrama indicam a direção do fluxo de informações:\n  - **ATMs** se conectam à **ATM Interface** através do **Acquiring Bank**.\n  - **PoS Terminals** interagem com a **PoS Interface**, também mediada pelo **Router**.\n  - **Gateways** se conectam à **Gateway Interface**.\n  \n- O **Router** funciona como um ponto de intermediação que direciona as transações entre as interfaces (ATM, PoS, Gateway) e as redes de pagamento (MasterCard, VISA, Diners).\n\n#### Processo Ilustrado Passo a Passo\n1. O **Cardholder** inicia uma transação em um dispositivo (ATM, PoS Terminal ou Gateway).\n2. O dispositivo se comunica com a interface correspondente no **Acquiring Bank**:\n   - Para **ATMs**, a transação vai para a **ATM Interface**.\n   - Para **PoS Terminals**, a comunicação é feita através da **PoS Interface**.\n   - Para **Gateways**, a conexão é feita via **Gateway Interface**.\n3. O **Router** no **Acquiring Bank** recebe as solicitações e as direciona para as interfaces de rede apropriadas (MasterCard, VISA, Diners).\n4. Cada rede de pagamento processa a transação e retorna a confirmação ou falha ao **Acquiring Bank**.\n5. O **Acquiring Bank** então informa o **Cardholder/Merchant** sobre o resultado da transação.\n\n#### Conexões Técnicas ou Funcionais\n- As interfaces (ATM, PoS, Gateway) são essenciais para a conexão com o **Acquiring Bank**, que atua como intermediário entre o comerciante e as redes de pagamento.\n- O uso do **Router** otimiza a comunicação e garante que as transações sejam processadas de forma eficiente, conectando múltiplas interfaces e redes.\n\n### Conclusão\nO diagrama representa um fluxo claro e estruturado de transações financeiras, delineando a interação entre os participantes e as etapas necessárias para processar uma transação a partir do usuário até a rede de pagamento. A utilização de elementos como routers e interfaces específicas é crucial para a eficiência e segurança do sistema.')]
+2024-12-03 21:38:04,933 - src.ada_dev_rag_py_ai.api - INFO - Response: answer='Este é um documento de teste para o sistema RAG.  \n \n \n \n \n \n \n \n \n \n \nPreparação para o BIN de oito dígitos  \n \nPerguntas frequentes  \n \nJaneiro de 2020 \n \n \n \nVisa Public  \n ### Análise do Diagrama de Fluxo de Informações\n\n#### Descrição Geral\nO diagrama apresentado ilustra um sistema de transações financeiras que envolve diferentes participantes e interfaces, destacando a interação entre eles em um fluxo de informações. O diagrama é dividido em três seções principais: "Cardholder/Merchant", "Acquiring Bank" e "Network".\n\n#### Fluxo de Informações\n- **Início do Fluxo:** O fluxo de informações inicia-se com o **Cardholder/Merchant**, que pode ser um consumidor ou um comerciante que utiliza dispositivos como **ATMs** (caixas eletrônicos), **PoS Terminals** (terminais de ponto de venda) e **Gateways**.\n- **Fim do Fluxo:** O fluxo se conclui quando a transação é processada através das interfaces de diferentes redes de pagamento (MasterCard, VISA, Diners).\n\n#### Participantes e Elementos Visíveis\n1. **Cardholder/Merchant:**\n   - **ATMs:** Dispositivos que permitem aos usuários realizar operações bancárias, como saques e consultas de saldo.\n   - **PoS Terminals:** Terminais de venda que facilitam transações em lojas.\n   - **Gateways:** Plataformas que conectam os comerciantes às redes de pagamento.\n\n2. **Acquiring Bank:**\n   - **Router:** Um elemento central que direciona as transações entre os dispositivos de entrada (ATM, PoS, Gateway) e as interfaces de rede.\n\n3. **Network:**\n   - **MasterCard, VISA, Diners:** Redes de pagamento que processam as transações e fornecem a interface para a comunicação.\n\n#### Interação entre os Participantes\n- As setas no diagrama indicam a direção do fluxo de informações:\n  - **ATMs** se conectam à **ATM Interface** através do **Acquiring Bank**.\n  - **PoS Terminals** interagem com a **PoS Interface**, também mediada pelo **Router**.\n  - **Gateways** se conectam à **Gateway Interface**.\n  \n- O **Router** funciona como um ponto de intermediação que direciona as transações entre as interfaces (ATM, PoS, Gateway) e as redes de pagamento (MasterCard, VISA, Diners).\n\n#### Processo Ilustrado Passo a Passo\n1. O **Cardholder** inicia uma transação em um dispositivo (ATM, PoS Terminal ou Gateway).\n2. O dispositivo se comunica com a interface correspondente no **Acquiring Bank**:\n   - Para **ATMs**, a transação vai para a **ATM Interface**.\n   - Para **PoS Terminals**, a comunicação é feita através da **PoS Interface**.\n   - Para **Gateways**, a conexão é feita via **Gateway Interface**.\n3. O **Router** no **Acquiring Bank** recebe as solicitações e as direciona para as interfaces de rede apropriadas (MasterCard, VISA, Diners).\n4. Cada rede de pagamento processa a transação e retorna a confirmação ou falha ao **Acquiring Bank**.\n5. O **Acquiring Bank** então informa o **Cardholder/Merchant** sobre o resultado da transação.\n\n#### Conexões Técnicas ou Funcionais\n- As interfaces (ATM, PoS, Gateway) são essenciais para a conexão com o **Acquiring Bank**, que atua como intermediário entre o comerciante e as redes de pagamento.\n- O uso do **Router** otimiza a comunicação e garante que as transações sejam processadas de forma eficiente, conectando múltiplas interfaces e redes.\n\n### Conclusão\nO diagrama representa um fluxo claro e estruturado de transações financeiras, delineando a interação entre os participantes e as etapas necessárias para processar uma transação a partir do usuário até a rede de pagamento. A utilização de elementos como routers e interfaces específicas é crucial para a eficiência e segurança do sistema.' sources=[{'source': 'texto_manual_1', 'type': 'texto'}, {'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, {'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmpdlukcljx.png', 'type': 'image'}]
+2024-12-03 21:38:20,301 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:38:35,372 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:38:36,271 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:40:12,941 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Iniciando processamento em lote de 3 imagens
+2024-12-03 21:40:13,221 - root - INFO - Texto extraído: (@)
+
+oo Scheme
+oo
+
+oo
+Hel!
+
+Acquiring Acquiring
+Bank Bank
+
+o¢
+
+Payment
+
+2024-12-03 21:40:13,227 - root - INFO - Texto extraído: (@)
+
+oo Scheme
+oo
+
+oo
+Hel!
+
+Acquiring Acquiring
+Bank Bank
+
+o¢
+
+Payment
+
+2024-12-03 21:40:13,634 - root - INFO - Texto extraído: {}
+
+AWS WAF AWS Shield aws | $1 Pubiic’subnet
+
+PrivateLink
+
+Amazon
+Route 53
+
+Amazon API
+Gateway
+
+AWS Certificate
+Manager
+
+on 2a
+coud ront
+
+Amazon Amazon AWS
+
+ElastiCache Aurora CloudHSM
+
+Amazon
+
+Amazon _ AWS
+ElastiCache Aurora CloudHSM
+
+re
+
+Amazon S3 PrivateLink
+
+Amazon Amazon
+
+Amazon Elastic Container Amazon Elastic Container
+
+Service
+
+Amazon
+
+\WS
+DynamobB— :CloudTrail CloudWatch OpenSearch
+
+Service
+
+Amazon
+juardDuty
+
+Registry
+
+AWS
+Config
+
+AWS Secrets
+Manager
+
+El
+
+Payment
+Processor
+
+Card Scheme
+
+2024-12-03 21:40:28,594 - root - INFO - Legenda gerada: a collage of images of a man on a computer 
+2024-12-03 21:40:28,836 - root - INFO - Legenda gerada: a collage of images of a man on a computer 
+2024-12-03 21:40:29,111 - root - INFO - Legenda gerada: a screen shot of a number of electronic devices 
+2024-12-03 21:40:40,282 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:40:45,089 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:40:47,188 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:40:52,507 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:40:57,847 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:41:04,111 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:41:04,116 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Processamento em lote concluído
+2024-12-03 21:41:04,119 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] Starting detailed stats retrieval
+2024-12-03 21:41:04,121 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] Detailed stats retrieved successfully in 0.0028 seconds
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] Detailed collection stats:
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] - Total Documents: 15
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] - Document Types: {'text': 15, 'image': 0}
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] - Sources: 0 sources
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] - Last Modified: 2024-12-03 21:41:04
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] - Collection Name: default_collection
+2024-12-03 21:41:04,122 - src.ada_dev_rag_py_ai.api - INFO - [20e147d3-b2fb-417c-8c84-19411636b4c8] Total detailed stats retrieval process completed in 0.0038 seconds
+2024-12-03 21:44:46,633 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] Starting detailed stats retrieval
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] Detailed stats retrieved successfully in 0.0015 seconds
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] Detailed collection stats:
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Total Documents: 15
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Document Types: {'text': 15, 'image': 0}
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Sources: 0 sources
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Last Modified: 2024-12-03 21:44:46
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Collection Name: default_collection
+2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] Total detailed stats retrieval process completed in 0.0027 seconds

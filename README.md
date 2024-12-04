@@ -1,126 +1,116 @@
-# Configuração do Ambiente Virtual Python
+# RAG System with FastAPI
 
-Este guia explica como configurar e usar o ambiente virtual (venv) para este projeto.
+This project implements a Retrieval Augmented Generation (RAG) system using FastAPI, LangChain, and ChromaDB.
 
-## Pré-requisitos
+## Prerequisites
 
-- Python 3.12 instalado
-- Acesso ao PowerShell ou Command Prompt (Windows)
+- Python 3.12 or higher
+- Poetry (Python package manager)
+- OpenAI API key
 
-## Configuração do Ambiente Virtual
+## Installation
 
-### 1. Criar o Ambiente Virtual
+1. **Install Poetry** (if not already installed):
+   ```bash
+   curl -sSL https://install.python-poetry.org | python3 -
+   ```
 
-```powershell
-# Usando Python 3.12 específicamente
-py -3.12 -m venv .venv
+2. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd ada-dev-rag-py-ai
+   ```
+
+3. **Install dependencies using Poetry**:
+   ```bash
+   poetry install
+   ```
+
+4. **Configure environment variables**:
+   - Copy `.env.example` to `.env`:
+     ```bash
+     copy .env.example .env
+     ```
+   - Edit `.env` and add your OpenAI API key and other required variables:
+     ```
+     OPENAI_API_KEY=your-api-key-here
+     ```
+
+## Running the Application
+
+1. **Activate the Poetry shell**:
+   ```bash
+   poetry shell
+   ```
+
+2. **Run the FastAPI application**:
+   ```bash
+   poetry run python -m uvicorn run:app --reload
+   ```
+
+   The application will be available at:
+   - API: http://127.0.0.1:8000
+   - Documentation: http://127.0.0.1:8000/docs
+   - Alternative docs: http://127.0.0.1:8000/redoc
+
+## Project Structure
+
+```
+ada-dev-rag-py-ai/
+├── src/
+│   └── ada_dev_rag_py_ai/
+│       ├── api.py           # FastAPI application and endpoints
+│       ├── core.py          # Core RAG functionality
+│       ├── main.py         # Application initialization
+│       └── image_batch_processor.py  # Image processing module
+├── tests/                  # Test files
+├── .env                    # Environment variables
+├── poetry.lock            # Lock file for dependencies
+├── pyproject.toml         # Project configuration and dependencies
+├── README.md             # This file
+└── run.py                # Application entry point
 ```
 
-### 2. Ativar o Ambiente Virtual
+## Development
 
-#### No Windows:
+- **Run tests**:
+  ```bash
+  poetry run pytest
+  ```
 
-PowerShell:
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
+- **Format code**:
+  ```bash
+  poetry run black .
+  ```
 
-Command Prompt:
-```cmd
-.\.venv\Scripts\activate.bat
-```
+- **Check linting**:
+  ```bash
+  poetry run flake8
+  ```
 
-#### No Linux/MacOS:
-```bash
-source .venv/bin/activate
-```
+## Troubleshooting
 
-Para confirmar que o ambiente virtual está ativo, você verá `(.venv)` no início do prompt.
+1. **Module not found errors**:
+   - Ensure you're running the application within Poetry's virtual environment:
+     ```bash
+     poetry shell
+     ```
+   - Verify the package is installed in development mode:
+     ```bash
+     poetry install
+     ```
 
-### 3. Desativar o Ambiente Virtual
+2. **OpenAI API errors**:
+   - Check if your API key is correctly set in the `.env` file
+   - Verify the API key is being loaded properly
 
-Quando quiser sair do ambiente virtual:
-```bash
-deactivate
-```
+3. **Port already in use**:
+   - Change the port using the `--port` flag:
+     ```bash
+     poetry run python -m uvicorn run:app --reload --port 8001
+     ```
 
-## Gerenciamento de Pacotes
+## Additional Documentation
 
-### Instalar Dependências
-```powershell
-# Instalar um pacote específico
-pip install nome-do-pacote
-
-# Instalar todos os pacotes do requirements.txt
-pip install -r requirements.txt
-```
-
-### Gerar requirements.txt
-```powershell
-pip freeze > requirements.txt
-```
-
-## Variáveis de Ambiente
-
-Este projeto usa `python-dotenv` para gerenciar variáveis de ambiente.
-
-1. Copie o arquivo `.env.example` para um novo arquivo chamado `.env`:
-```powershell
-copy .env.example .env
-```
-
-2. Edite o arquivo `.env` com suas configurações reais
-
-3. No código Python, use as variáveis assim:
-```python
-from dotenv import load_dotenv
-import os
-
-# Carrega as variáveis do arquivo .env
-load_dotenv()
-
-# Acessa as variáveis
-api_key = os.getenv('API_KEY')
-```
-
-## Running the FastAPI Application
-
-To start the FastAPI application using Uvicorn, use the following command:
-
-```bash
-uvicorn src.ada_dev_rag_py_ai.api:app --host 0.0.0.0 --port 8000
-```
-
-### Explanation
-
-- **`uvicorn`**: The command to run the Uvicorn server.
-- **`src.ada_dev_rag_py_ai.api:app`**: Specifies the application to run, where `src.ada_dev_rag_py_ai.api` is the module path and `app` is the ASGI application instance.
-- **`--host 0.0.0.0`**: Makes the application accessible from any network interface on the machine.
-- **`--port 8000`**: The port on which the application will listen for incoming HTTP requests.
-
-This command is typically used during development to run the FastAPI application locally. For production deployments, consider using a more robust setup with a process manager and a reverse proxy.
-
-## Boas Práticas
-
-1. **SEMPRE** use o ambiente virtual ao trabalhar no projeto
-2. **NUNCA** comite o arquivo `.env` no git
-3. Mantenha o `requirements.txt` atualizado
-4. Atualize o `.env.example` quando adicionar novas variáveis de ambiente
-
-## Solução de Problemas
-
-### Erro ao Ativar o Ambiente Virtual no PowerShell
-Se encontrar erro de permissão no PowerShell, execute:
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-### Verificar Versão do Python no Ambiente Virtual
-```powershell
-python --version
-```
-
-### Listar Pacotes Instalados
-```powershell
-pip list
-```
+- [ROADMAP.md](ROADMAP.md) - Project roadmap and future plans
+- [tasks.md](tasks.md) - Current tasks and implementation status

@@ -31,6 +31,7 @@ from src.ada_dev_rag_py_ai.models import (
     DetailedStats,
     DocumentContent
 )
+from .image_batch_processor import ImageBatchProcessor
 
 app = FastAPI(
     title="RAG System API",
@@ -38,6 +39,10 @@ app = FastAPI(
     version="0.1.0",
     debug=True
 )
+
+# Instância global do RAG
+rag = RAG()
+image_processor = ImageBatchProcessor()
 
 # Configuração CORS
 app.add_middleware(
@@ -47,9 +52,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Instância global do RAG
-rag = RAG()
 
 @app.post("/query", response_model=QueryResponse)
 async def query_documents(request: QueryRequest):
@@ -408,4 +410,41 @@ async def remove_document(source: str):
             raise HTTPException(status_code=500, detail="Falha ao remover documento")
         return {"message": "Documento removido com sucesso"}
     except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/images/batch")
+async def process_image_batch(files: List[UploadFile] = File(...)):
+    """Processa um lote de imagens em paralelo com cache."""
+    temp_paths = []
+    try:
+        for file in files:
+            temp_dir = Path("temp_uploads")
+            temp_dir.mkdir(exist_ok=True)
+            temp_path = temp_dir / f"{uuid.uuid4()}_{file.filename}"
+            async with aiofiles.open(temp_path, 'wb') as out_file:
+                content = await file.read()
+                await out_file.write(content)
+            temp_paths.append(str(temp_path))
+        
+        results = image_processor.process_batch(temp_paths)
+        
+        # Limpa arquivos temporários
+        for path in temp_paths:
+            Path(path).unlink(missing_ok=True)
+        
+        return {"results": results}
+    except Exception as e:
+        logger.error(f"Erro no processamento em lote: {e}")
+        for path in temp_paths:
+            Path(path).unlink(missing_ok=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/images/cache")
+async def clear_image_cache(older_than: Optional[int] = None):
+    """Limpa o cache de processamento de imagens."""
+    try:
+        image_processor.clear_cache(older_than)
+        return {"message": "Cache limpo com sucesso"}
+    except Exception as e:
+        logger.error(f"Erro ao limpar cache: {e}")
         raise HTTPException(status_code=500, detail=str(e))
