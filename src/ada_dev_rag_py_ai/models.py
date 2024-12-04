@@ -1,3 +1,6 @@
+"""
+Modelos de dados para a API
+"""
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
 
@@ -27,3 +30,24 @@ class DocumentContent(BaseModel):
     source: str
     type: str
     content: str
+
+class ChatMessage(BaseModel):
+    """
+    Modelo para mensagem do chat
+    """
+    content: str
+    include_context: bool = True
+
+class ChatResponse(BaseModel):
+    """
+    Modelo para resposta do chat
+    """
+    message: str
+    success: bool
+
+class ChatHistory(BaseModel):
+    """
+    Modelo para histórico do chat
+    """
+    history: List[Dict[str, Any]]
+    success: bool

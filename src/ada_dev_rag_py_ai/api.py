@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 import asyncio
 from pathlib import Path
 import aiofiles
@@ -29,9 +29,12 @@ from src.ada_dev_rag_py_ai.models import (
     TextDocument, 
     CollectionStats,
     DetailedStats,
-    DocumentContent
+    DocumentContent,
+    ChatMessage,
+    ChatResponse
 )
 from .image_batch_processor import ImageBatchProcessor
+from .chat import RAGChat
 
 app = FastAPI(
     title="RAG System API",
@@ -43,6 +46,7 @@ app = FastAPI(
 # Instância global do RAG
 rag = RAG()
 image_processor = ImageBatchProcessor()
+chat_instance = RAGChat()
 
 # Configuração CORS
 app.add_middleware(
@@ -448,3 +452,63 @@ async def clear_image_cache(older_than: Optional[int] = None):
     except Exception as e:
         logger.error(f"Erro ao limpar cache: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/chat/message", response_model=ChatResponse)
+async def chat_message(message: ChatMessage):
+    """
+    Processa uma mensagem do chat usando RAG + LLM
+    """
+    try:
+        response = await chat_instance.chat(
+            message=message.content,
+            include_context=message.include_context
+        )
+        
+        return ChatResponse(
+            message=response,
+            success=True
+        )
+        
+    except Exception as e:
+        logger.error(f"Erro no processamento do chat: {str(e)}")
+        logger.error(traceback.format_exc())
+        raise HTTPException(
+            status_code=500,
+            detail=f"Erro no processamento do chat: {str(e)}"
+        )
+
+@app.get("/chat/history")
+async def get_chat_history():
+    """
+    Retorna o histórico do chat
+    """
+    try:
+        return {
+            "history": chat_instance.get_chat_history(),
+            "success": True
+        }
+        
+    except Exception as e:
+        logger.error(f"Erro ao recuperar histórico: {str(e)}")
+        logger.error(traceback.format_exc())
+        raise HTTPException(
+            status_code=500,
+            detail=f"Erro ao recuperar histórico: {str(e)}"
+        )
+
+@app.post("/chat/clear")
+async def clear_chat_history():
+    """
+    Limpa o histórico do chat
+    """
+    try:
+        chat_instance.clear_history()
+        return {"success": True, "message": "Histórico limpo com sucesso"}
+        
+    except Exception as e:
+        logger.error(f"Erro ao limpar histórico: {str(e)}")
+        logger.error(traceback.format_exc())
+        raise HTTPException(
+            status_code=500,
+            detail=f"Erro ao limpar histórico: {str(e)}"
+        )

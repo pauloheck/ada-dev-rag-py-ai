@@ -4,6 +4,64 @@ Módulo principal para execução do sistema RAG
 import os
 from ada_dev_rag_py_ai.core import init_llm, init_rag, create_qa_chain
 from ada_dev_rag_py_ai.image_analysis import analyze_image
+from ada_dev_rag_py_ai.chat import RAGChat
+from datetime import datetime
+
+def process_chat_interaction(chat_instance: RAGChat):
+    """
+    Processa uma interação do chat
+    
+    Args:
+        chat_instance: Instância do RAGChat
+    """
+    print("\n=== Chat Interativo RAG ===")
+    print("Digite 'sair' para voltar ao menu principal")
+    print("Digite 'histórico' para ver o histórico")
+    print("Digite 'limpar' para limpar o histórico")
+    print("Digite 'contexto on/off' para ativar/desativar o uso de contexto")
+    
+    include_context = True
+    
+    while True:
+        try:
+            user_input = input("\nVocê: ").strip().lower()
+            
+            if user_input == 'sair':
+                break
+                
+            elif user_input == 'histórico':
+                history = chat_instance.get_chat_history()
+                print("\n=== Histórico do Chat ===")
+                for msg in history:
+                    role = "Você" if msg["role"] == "human" else "Assistente"
+                    timestamp = datetime.fromisoformat(msg["timestamp"]).strftime("%H:%M:%S")
+                    print(f"\n[{timestamp}] {role}:")
+                    print(msg["content"])
+                continue
+                
+            elif user_input == 'limpar':
+                chat_instance.clear_history()
+                print("\nHistórico limpo!")
+                continue
+                
+            elif user_input.startswith('contexto'):
+                if 'on' in user_input:
+                    include_context = True
+                    print("\nUso de contexto ativado!")
+                elif 'off' in user_input:
+                    include_context = False
+                    print("\nUso de contexto desativado!")
+                continue
+                
+            if not user_input:
+                continue
+                
+            # Processa a mensagem
+            response = chat_instance.chat(user_input, include_context)
+            print("\nAssistente:", response)
+            
+        except Exception as e:
+            print(f"\nErro no chat: {str(e)}")
 
 def main():
     """
@@ -14,11 +72,10 @@ def main():
         print("\nInicializando o modelo LLM e o sistema RAG...")
         llm = init_llm()
         rag = init_rag()
+        chat = RAGChat()
         
         # Cria a chain de QA
         qa_chain = create_qa_chain(llm, rag)
-        
-
         
         while True:
             print("\n=== Sistema RAG - Menu Principal ===\n")
@@ -42,6 +99,9 @@ def main():
             print("   12. Limpar base de dados")
             print("   13. Exportar documentos")
             
+            print("\n4. Chat Interativo")
+            print("   14. Iniciar chat com RAG")
+            
             print("\n0. Sair")
             print("\n" + "="*20)
             
@@ -50,7 +110,7 @@ def main():
             if choice == "0":
                 print("\nEncerrando o programa...")
                 break
-            
+                
             elif choice == "1":
                 directory = input("\nDigite o caminho do diretório com os documentos: ")
                 try:
@@ -197,6 +257,9 @@ def main():
                 else:
                     print("Erro ao exportar documentos.")
                     
+            elif choice == "14":
+                process_chat_interaction(chat)
+                
             else:
                 print("\nOpção inválida. Por favor, escolha uma opção válida.")
                 
@@ -206,4 +269,5 @@ def main():
         raise
 
 if __name__ == "__main__":
-    main()
+    import asyncio
+    asyncio.run(main())

@@ -130,3 +130,106 @@
 7. Testar recuperação de diferentes versões
 8. Avaliar tempo de resposta com índices
 9. Monitorar uso de espaço em disco
+
+# Tasks e Melhorias
+
+## Implementado 
+- Sistema RAG base
+- Processamento de documentos
+- Embeddings multimodais
+- API REST
+- Chat interativo com contexto
+- Gerenciamento de histórico
+- Integração com OpenAI
+
+## Em Desenvolvimento 
+
+### Melhorias no Chat
+- [ ] Implementar streaming de respostas
+  - Melhorar experiência do usuário
+  - Reduzir tempo de espera percebido
+  - Implementar SSE (Server-Sent Events)
+
+- [ ] Adicionar Function Calling
+  - Permitir ações específicas via chat
+  - Integrar com APIs externas
+  - Implementar validação de comandos
+
+- [ ] Personalização por Usuário
+  - Sistema de autenticação
+  - Preferências individuais
+  - Histórico personalizado
+  - Contextos específicos por usuário
+
+### Otimizações RAG
+- [ ] Implementar Reranking
+  - Melhorar relevância dos resultados
+  - Adicionar pesos por tipo de conteúdo
+  - Implementar cross-encoder
+
+- [ ] Filtros de Relevância
+  - Filtros por tipo de documento
+  - Filtros por data
+  - Filtros por fonte
+  - Score de confiança
+
+- [ ] Otimização de Contexto
+  - Melhorar seleção de chunks
+  - Implementar sliding window
+  - Otimizar tamanho de contexto
+  - Adicionar metadata filtering
+
+### Interface Gráfica
+- [ ] Desenvolver Frontend
+  - Interface moderna e responsiva
+  - Suporte a temas claro/escuro
+  - Visualização de documentos
+  - Dashboard de estatísticas
+
+- [ ] Interface de Chat
+  - Design moderno tipo ChatGPT
+  - Suporte a markdown
+  - Visualização de imagens inline
+  - Indicadores de digitação
+
+- [ ] Visualização de Documentos
+  - Preview de documentos
+  - Highlight de trechos relevantes
+  - Zoom em imagens
+  - Exportação de documentos
+
+### Infraestrutura
+- [ ] Otimização de Performance
+  - Caching de embeddings
+  - Otimização de queries
+  - Compressão de dados
+  - Load balancing
+
+- [ ] Monitoramento
+  - Logging avançado
+  - Métricas de uso
+  - Alertas de erros
+  - Dashboard de performance
+
+- [ ] Segurança
+  - Rate limiting
+  - Validação de inputs
+  - Sanitização de dados
+  - Backup automático
+
+## Backlog 
+- Suporte a mais formatos de arquivo
+- Integração com mais LLMs
+- API em GraphQL
+- Testes automatizados
+- Documentação detalhada
+- CI/CD pipeline
+- Containerização
+- Deploy automático
+
+## Notas 
+- Priorizar melhorias de UX
+- Manter compatibilidade com versões anteriores
+- Documentar todas as mudanças
+- Seguir boas práticas de código
+- Manter testes atualizados

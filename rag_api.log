@@ -367,3 +367,119 @@ Card Scheme
 2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Last Modified: 2024-12-03 21:44:46
 2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] - Collection Name: default_collection
 2024-12-03 21:44:46,636 - src.ada_dev_rag_py_ai.api - INFO - [a14b742d-ef06-43ac-a0ef-777ac8cf7159] Total detailed stats retrieval process completed in 0.0027 seconds
+2024-12-03 21:54:51,401 - src.ada_dev_rag_py_ai.api - INFO - Received query request: strvbzxcvbzxcving
+2024-12-03 21:54:51,942 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:54:51,964 - src.ada_dev_rag_py_ai.api - INFO - Query result: [Document(metadata={'added_at': '2024-12-03T21:37:24.521620', 'source': 'texto_manual_1', 'type': 'texto'}, page_content='strvzxcvzxcvzxing'), Document(metadata={'added_at': '2024-12-03T21:37:31.317722', 'source': 'texto_manual_1', 'type': 'texto'}, page_content='strvzxcvzxcvzxing'), Document(metadata={'created_at': '2024-12-01 19:43:54.305876', 'filename': 'tmp2y93nlfs.pdf', 'page': 0, 'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}, page_content=' \n \n \n \n \n \n \n \n \n \n \nPreparação para o BIN de oito dígitos  \n \nPerguntas frequentes  \n \nJaneiro de 2020 \n \n \n \nVisa Public  \n')]
+2024-12-03 21:54:51,964 - src.ada_dev_rag_py_ai.api - INFO - Response: answer='strvzxcvzxcvzxing strvzxcvzxcvzxing  \n \n \n \n \n \n \n \n \n \n \nPreparação para o BIN de oito dígitos  \n \nPerguntas frequentes  \n \nJaneiro de 2020 \n \n \n \nVisa Public  \n' sources=[{'source': 'texto_manual_1', 'type': 'texto'}, {'source': 'texto_manual_1', 'type': 'texto'}, {'source': 'C:\\Users\\paulo\\AppData\\Local\\Temp\\tmp2y93nlfs.pdf', 'type': 'pdf'}]
+2024-12-03 21:54:55,088 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 21:55:11,203 - src.ada_dev_rag_py_ai.api - INFO - Received request to add text document: content='strizxczxcvzxcvzxng' metadata={}
+2024-12-03 21:55:11,204 - src.ada_dev_rag_py_ai.api - INFO - Preparing to add document content to the knowledge base: strizxczxcvzxcvzxng
+2024-12-03 21:55:12,106 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:55:12,125 - src.ada_dev_rag_py_ai.api - INFO - Document added successfully: True
+2024-12-03 21:55:12,125 - src.ada_dev_rag_py_ai.api - INFO - Returning success response for document addition
+2024-12-03 21:55:27,384 - root - INFO - Texto extraído: {}
+
+AWS WAF AWS Shield aws | $1 Pubiic’subnet
+
+PrivateLink
+
+Amazon
+Route 53
+
+Amazon API
+Gateway
+
+AWS Certificate
+Manager
+
+on 2a
+coud ront
+
+Amazon Amazon AWS
+
+ElastiCache Aurora CloudHSM
+
+Amazon
+
+Amazon _ AWS
+ElastiCache Aurora CloudHSM
+
+re
+
+Amazon S3 PrivateLink
+
+Amazon Amazon
+
+Amazon Elastic Container Amazon Elastic Container
+
+Service
+
+Amazon
+
+\WS
+DynamobB— :CloudTrail CloudWatch OpenSearch
+
+Service
+
+Amazon
+juardDuty
+
+Registry
+
+AWS
+Config
+
+AWS Secrets
+Manager
+
+El
+
+Payment
+Processor
+
+Card Scheme
+
+2024-12-03 21:55:31,282 - root - INFO - Legenda gerada: a screen shot of a number of electronic devices 
+2024-12-03 21:55:46,867 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:56:02,075 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:56:02,567 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 21:56:37,237 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Iniciando processamento em lote de 1 imagens
+2024-12-03 21:56:37,239 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Cache hit para temp_uploads\58653aca-5f29-4102-8d21-ece5002c364f_payments-reference-architecture.png
+2024-12-03 21:56:37,239 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Processamento em lote concluído
+2024-12-03 21:56:54,351 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Iniciando processamento em lote de 1 imagens
+2024-12-03 21:56:54,754 - root - INFO - Texto extraído: Amazon ECS Amazon ECR
+
+BS Processing VPC
+& a
+mS =
+Pos Ecommerce Gpreway Load &
+i
+: WS
+—
+7 zi
+&
+‘Amazon $3 j= Aner Amazon Amazon Amazon Amazon AWS CloudTre Amazon = Amazon AWS: Amazon ‘Amazon AWS Certiicate AWS KMS
+
+
+2024-12-03 21:56:58,262 - root - INFO - Legenda gerada: a series of photos showing different types of electronic devices 
+2024-12-03 21:57:24,121 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:57:37,796 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 21:57:37,809 - src.ada_dev_rag_py_ai.image_batch_processor - INFO - Processamento em lote concluído
+2024-12-03 22:16:53,975 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 22:19:27,150 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 22:24:28,606 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 22:25:07,422 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:26:50,345 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:27:10,530 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:27:29,358 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-12-03 22:27:48,214 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:27:49,429 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 22:28:10,977 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:28:16,757 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-03 22:30:09,000 - src.ada_dev_rag_py_ai.api - INFO - Received request to add text document: content='Meu nome é Paulo Heck no sistema Rag' metadata={}
+2024-12-03 22:30:09,001 - src.ada_dev_rag_py_ai.api - INFO - Preparing to add document content to the knowledge base: Meu nome é Paulo Heck no sistema Rag
+2024-12-03 22:30:10,426 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:30:10,444 - src.ada_dev_rag_py_ai.api - INFO - Document added successfully: True
+2024-12-03 22:30:10,444 - src.ada_dev_rag_py_ai.api - INFO - Returning success response for document addition
+2024-12-03 22:30:44,830 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-12-03 22:30:45,529 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
